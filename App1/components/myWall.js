@@ -6,14 +6,12 @@ import ImagePicker from 'react-native-image-crop-picker';
 
 const MyWall = () => {
   const [avaLink, avaLinkState] = useState(require('./image/castle.jpg'));
-  const [fontLink, fontLinkState] = useState();
+  const [fontLink, fontLinkState] = useState({uri: 'https://ae01.alicdn.com/kf/HTB1Q2a.XxD1gK0jSZFsq6zldVXau.jpg'});
 
-  const accessGallery = () => {
+  const accessGalleryAva = () => {
     ImagePicker.openPicker({
       multiple: true
     }).then(images => {
-      console.log(images)
-      console.log(images[0].path);
       avaLinkState({avaLink: images[0].path});
     });
   }
@@ -22,7 +20,7 @@ const MyWall = () => {
     <View style={styles.container}>
       <View style={styles.fontImgBG}>
         <Image
-          source={{uri: 'https://ae01.alicdn.com/kf/HTB1Q2a.XxD1gK0jSZFsq6zldVXau.jpg'}}
+          source={{uri: fontLink.fontLink}}
           style={styles.fontImg}
           resizeMode="cover"
         />
@@ -32,7 +30,7 @@ const MyWall = () => {
       </View>
       <View style={styles.avaConatiner}>
         <Image source={{uri: avaLink.avaLink}} style={styles.avaImg} resizeMode='cover' />
-        <TouchableOpacity style={styles.iconCameraAva} onPress={() => accessGallery()}>
+        <TouchableOpacity style={styles.iconCameraAva} onPress={() => accessGalleryAva()}>
           <Icon name="camera" size={25} style={{padding: 3}} />
         </TouchableOpacity>
       </View>
