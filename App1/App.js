@@ -7,7 +7,6 @@
  */
 
 import React from 'react';
-import LoginPage from './components/loginPage';
 import {View} from 'react-native';
 import MyWall from './components/myWall';
 
