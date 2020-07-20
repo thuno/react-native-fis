@@ -7,13 +7,16 @@
  */
 
 import React from 'react';
+import LoginPage from './components/loginPage';
 import {View} from 'react-native';
+import MyWall from './components/myWall';
 
-const App: () => React$Node = () => {
-  return (
-    <View> 
+const App = () => {
+  return(
+    <View style={{flex: 1}}>
+      {/* <LoginPage/> */}
+      <MyWall/>
     </View>
-  );
-};
-
+  )
+}
 export default App;
