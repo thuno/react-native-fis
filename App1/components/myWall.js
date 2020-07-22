@@ -5,32 +5,50 @@ import {Button} from 'react-native-paper';
 import ImagePicker from 'react-native-image-crop-picker';
 
 const MyWall = () => {
-  const [avaLink, avaLinkState] = useState(require('./image/castle.jpg'));
-  const [fontLink, fontLinkState] = useState({uri: 'https://ae01.alicdn.com/kf/HTB1Q2a.XxD1gK0jSZFsq6zldVXau.jpg'});
+  const [avaLink, avaLinkState] = useState();
+  const [fontLink, fontLinkState] = useState(
+    'https://ae01.alicdn.com/kf/HTB1Q2a.XxD1gK0jSZFsq6zldVXau.jpg',
+  );
 
   const accessGalleryAva = () => {
     ImagePicker.openPicker({
-      multiple: true
-    }).then(images => {
-      avaLinkState({avaLink: images[0].path});
+      multiple: true,
+    }).then((images) => {
+      avaLinkState(images[0].path);
     });
-  }
+  };
+
+  const accessGalleryFont = () => {
+    ImagePicker.openPicker({
+      multiple: true,
+    }).then((images) => {
+      fontLinkState(images[0].path);
+    });
+  };
 
   return (
     <View style={styles.container}>
       <View style={styles.fontImgBG}>
         <Image
-          source={{uri: fontLink.fontLink}}
+          source={{uri: fontLink}}
           style={styles.fontImg}
           resizeMode="cover"
         />
-        <TouchableOpacity style={styles.iconCameraFont}>
+        <TouchableOpacity
+          style={styles.iconCameraFont}
+          onPress={() => accessGalleryFont()}>
           <Icon name="camera" size={30} style={{padding: 3}} />
         </TouchableOpacity>
       </View>
       <View style={styles.avaConatiner}>
-        <Image source={{uri: avaLink.avaLink}} style={styles.avaImg} resizeMode='cover' />
-        <TouchableOpacity style={styles.iconCameraAva} onPress={() => accessGalleryAva()}>
+        <Image
+          source={{uri: avaLink}}
+          style={styles.avaImg}
+          resizeMode="cover"
+        />
+        <TouchableOpacity
+          style={styles.iconCameraAva}
+          onPress={() => accessGalleryAva()}>
           <Icon name="camera" size={25} style={{padding: 3}} />
         </TouchableOpacity>
       </View>
@@ -51,20 +69,7 @@ const MyWall = () => {
           . . .
         </Button>
       </View>
-      <View style={styles.infor}>
-        <View style={styles.eachInfo}>
-          <Icon name="phone" size={20} style={styles.iconInfor} />
-          <Text style={styles.textInfor}>19004766</Text>
-        </View>
-        <View style={styles.eachInfo}>
-          <Icon name="address-book" size={20} style={styles.iconInfor} />
-          <Text style={styles.textInfor}>63 Trần Quốc Vượng, Cầu Giấy, HN</Text>
-        </View>
-        <View style={styles.eachInfo}>
-          <Icon name="graduation-cap" size={20} style={styles.iconInfor} />
-          <Text style={styles.textInfor}>Đã học tại THPT Trần Nguyên Hãn</Text>
-        </View>
-      </View>
+      
     </View>
   );
 };
@@ -119,26 +124,6 @@ const styles = StyleSheet.create({
   addNews: {
     flexDirection: 'row',
     margin: 5,
-  },
-  infor: {
-    borderTopWidth: 0.5,
-    margin: 10,
-    width: '100%',
-    padding: 5,
-  },
-  eachInfo: {
-    flexDirection: 'row',
-    margin: 5,
-    backgroundColor: '#ddd',
-    alignItems: 'center',
-    padding: 5,
-  },
-  iconInfor: {
-    margin: 10,
-  },
-  textInfor: {
-    flex: 1,
-    fontSize: 20,
   },
 });
 
