@@ -81,6 +81,8 @@ target 'App1' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+  pod 'react-native-document-picker', :path => '../node_modules/react-native-document-picker'
+
   target 'App1Tests' do
     inherit! :complete
     # Pods for testing

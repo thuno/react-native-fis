@@ -33,6 +33,11 @@ const NotiScreen = () => {
     actions: '["Yes", "No"]', // (Android only) See the doc for notification actions to know more
     invokeApp: true, // (optional) This enable click on actions to bring back the application to foreground or stay in background, default: true
 
+     // /* iOS only properties */
+        // alertAction: "view", // (optional) default: view
+        // category: "", // (optional) default: empty string
+        // userInfo: {}, // (optional) default: {} (using null throws a JSON value '<null>' error)
+
     /* iOS and Android properties */
     title: 'My Notification Title', // (optional)
     message: 'My Notification Message', // (required)
@@ -51,11 +56,16 @@ const NotiScreen = () => {
     // (required) Called when a remote is received or opened, or local notification is opened
     onNotification: function (notification) {
       console.log('NOTIFICATION:', notification);
+      PushNotification.localNotification({
+        ...option,
+        title: notification.title,
+        message: notification.message,
+      });
 
       // process the notification
 
       // (required) Called when a remote is received or opened, or local notification is opened
-      notification.finish(PushNotificationIOS.FetchResult.NoData);
+    //   notification.finish(PushNotificationIOS.FetchResult.NoData);
     },
 
     // (optional) Called when Registered Action is pressed and invokeApp is false, if true onNotification will be called (Android)
@@ -72,11 +82,11 @@ const NotiScreen = () => {
     },
 
     // IOS ONLY (optional): default: all - Permissions to register.
-    // permissions: {
-    //   alert: true,
-    //   badge: true,
-    //   sound: true,
-    // },
+    permissions: {
+      alert: true,
+      badge: true,
+      sound: true,
+    },
 
     // Should the initial notification be popped automatically
     // default: true
@@ -103,14 +113,14 @@ const NotiScreen = () => {
 
   const localNotiSchedule = () => {
     PushNotification.localNotificationSchedule({
-      message: 'My Notification Message', // (required)
+      ...option, // (required)
       date: new Date(Date.now() + 5 * 1000), // in 60 secs
     });
   };
   return (
-    <View>
-      <Button title="Push notification" onpress={localNoti} />
-      <Button title="Push notification after 5s" onpress={localNotiSchedule} />
+    <View style={{margin: 10, flex: 1}}>
+      <Button title="Push notification" onPress={localNoti} />
+      <Button title="Push notification after 5s" onPress={localNotiSchedule} />
     </View>
   );
 };

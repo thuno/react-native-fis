@@ -5,10 +5,8 @@ import {Button} from 'react-native-paper';
 import ImagePicker from 'react-native-image-crop-picker';
 
 const MyWall = () => {
-  const [avaLink, avaLinkState] = useState();
-  const [fontLink, fontLinkState] = useState(
-    'https://ae01.alicdn.com/kf/HTB1Q2a.XxD1gK0jSZFsq6zldVXau.jpg',
-  );
+  const [avaLink, avaLinkState] = useState('https://i.pinimg.com/originals/7f/75/6b/7f756bcb3481db56650768cc5fc0cf50.jpg');
+  const [fontLink, fontLinkState] = useState('https://ae01.alicdn.com/kf/HTB1Q2a.XxD1gK0jSZFsq6zldVXau.jpg');
 
   const accessGalleryAva = () => {
     ImagePicker.openPicker({
@@ -69,21 +67,20 @@ const MyWall = () => {
           . . .
         </Button>
       </View>
-      
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: 'center',
+    flex: 2,
     margin: 3,
   },
   fontImgBG: {
     margin: 5,
     borderRadius: 15,
-    height: '30%',
+    height: '50%',
     width: '100%',
   },
   fontImg: {
