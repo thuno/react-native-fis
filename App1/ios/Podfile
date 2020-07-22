@@ -83,6 +83,8 @@ target 'App1' do
 
   pod 'react-native-document-picker', :path => '../node_modules/react-native-document-picker'
 
+  pod 'react-native-geolocation-service', :path => '../node_modules/react-native-geolocation-service'
+
   target 'App1Tests' do
     inherit! :complete
     # Pods for testing

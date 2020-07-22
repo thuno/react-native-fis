@@ -3,7 +3,7 @@ import {Text, View, Button} from 'react-native';
 import DocumentPicker from 'react-native-document-picker';
 
 const PickDocScreen = () => {
-  const [document, setDocument] = useState();
+  const [document, setDocument] = useState({});
 
   const pickFile = async () => {
     try {
@@ -11,7 +11,7 @@ const PickDocScreen = () => {
         type: [DocumentPicker.types.allFiles],
       });
       for (const res of results) {
-        setDocument(res.uri);
+        setDocument({uri: res.uri});
       }
     } catch (err) {
       if (DocumentPicker.isCancel(err)) {
@@ -23,9 +23,9 @@ const PickDocScreen = () => {
   };
 
   return (
-    <View style={{marginTop: 20}}>
+    <View style={{marginTop: 10}}>
       <Button title="Pick file" onPress={pickFile} />
-      <Text>{document}</Text>
+      <Text>file: {document.uri}</Text>
     </View>
   );
 };

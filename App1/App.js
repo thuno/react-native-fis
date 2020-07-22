@@ -7,19 +7,23 @@
  */
 
 import React from 'react';
-import {View} from 'react-native';
+import {View, ScrollView} from 'react-native';
 import MyWall from './components/myWall';
 import NotiScreen from './screens/notificationScreen';
 import PickDoc from './screens/pickDocScreen';
+import Location from './screens/locationScreen';
 
 const App = () => {
-  return(
+  return (
     <View style={{flex: 1}}>
-      {/* <LoginPage/> */}
-      <MyWall/>
-      <PickDoc/>
-      <NotiScreen/>
+    {/* <LoginPage/> */}
+        <MyWall />
+        <ScrollView style={{marginTop: '-15%'}}>
+        <PickDoc />
+        <Location />
+        <NotiScreen />
+    </ScrollView>
     </View>
-  )
-}
+  );
+};
 export default App;

@@ -118,7 +118,7 @@ const NotiScreen = () => {
     });
   };
   return (
-    <View style={{margin: 10, flex: 1}}>
+    <View style={{margin: 10}}>
       <Button title="Push notification" onPress={localNoti} />
       <Button title="Push notification after 5s" onPress={localNotiSchedule} />
     </View>

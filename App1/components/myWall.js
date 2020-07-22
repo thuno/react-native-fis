@@ -74,13 +74,11 @@ const MyWall = () => {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    flex: 2,
-    margin: 3,
   },
   fontImgBG: {
     margin: 5,
     borderRadius: 15,
-    height: '50%',
+    height: '40%',
     width: '100%',
   },
   fontImg: {
