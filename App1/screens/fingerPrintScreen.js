@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import {Text, View, Button, Alert} from 'react-native';
+import {View, Alert} from 'react-native';
 import FingerprintScanner from 'react-native-fingerprint-scanner';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
-const FingerPrintScreen = () => {
+const FingerPrintScreen = (props) => {
   const [checkFinger, setCheckFinger] = useState({
     errorMessageLegacy: undefined,
     biometricLegacy: undefined,
@@ -13,6 +14,7 @@ const FingerPrintScreen = () => {
     })
       .then(() => {
         Alert.alert('Fingerprint Authentication', 'Authenticated successfully');
+        props.Press()
       })
       .catch((error) => {
         setCheckFinger({
@@ -24,7 +26,7 @@ const FingerPrintScreen = () => {
 
   return (
     <View>
-      <Button title="Check Finger" onPress={checkFingerID} />
+      <Icon name='fingerprint' onPress={checkFingerID} size={30}/>
     </View>
   );
 };

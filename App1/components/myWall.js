@@ -1,12 +1,23 @@
 import React, {useState} from 'react';
-import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  FlatList,
+} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import {Button} from 'react-native-paper';
 import ImagePicker from 'react-native-image-crop-picker';
 
-const MyWall = () => {
-  const [avaLink, avaLinkState] = useState('https://i.pinimg.com/originals/7f/75/6b/7f756bcb3481db56650768cc5fc0cf50.jpg');
-  const [fontLink, fontLinkState] = useState('https://ae01.alicdn.com/kf/HTB1Q2a.XxD1gK0jSZFsq6zldVXau.jpg');
+const MyWall = ({navigation}) => {
+  const [avaLink, avaLinkState] = useState(
+    'https://i.pinimg.com/originals/7f/75/6b/7f756bcb3481db56650768cc5fc0cf50.jpg',
+  );
+  const [fontLink, fontLinkState] = useState(
+    'https://ae01.alicdn.com/kf/HTB1Q2a.XxD1gK0jSZFsq6zldVXau.jpg',
+  );
 
   const accessGalleryAva = () => {
     ImagePicker.openPicker({
@@ -24,8 +35,42 @@ const MyWall = () => {
     });
   };
 
+  const Screen = [
+    {
+      id: 1,
+      title: 'Push notification',
+      name: 'NotiScreen',
+      icon: 'message-text-outline',
+    },
+    {
+      id: 2,
+      title: 'Pick Document',
+      name: 'PicDoc',
+      icon: 'file-document-outline',
+    },
+    {
+      id: 3,
+      title: 'View Location',
+      name: 'Location',
+      icon: 'map-marker-outline',
+    },
+    {
+      id: 4,
+      title: 'View Contacts',
+      name: 'Contact',
+      icon: 'contacts',
+    },
+    {
+      id: 5,
+      title: 'View SMS',
+      name: 'SMS',
+      icon: 'android-messages',
+    },
+  ];
+
   return (
     <View style={styles.container}>
+      <View style={{alignItems: 'center',position: 'relative'}}>
       <View style={styles.fontImgBG}>
         <Image
           source={{uri: fontLink}}
@@ -35,7 +80,7 @@ const MyWall = () => {
         <TouchableOpacity
           style={styles.iconCameraFont}
           onPress={() => accessGalleryFont()}>
-          <Icon name="camera" size={30} style={{padding: 3}} />
+          <Icon name="camera-retro" size={30} style={{padding: 3}} />
         </TouchableOpacity>
       </View>
       <View style={styles.avaConatiner}>
@@ -47,7 +92,7 @@ const MyWall = () => {
         <TouchableOpacity
           style={styles.iconCameraAva}
           onPress={() => accessGalleryAva()}>
-          <Icon name="camera" size={25} style={{padding: 3}} />
+          <Icon name="camera-retro" size={25} style={{padding: 3}} />
         </TouchableOpacity>
       </View>
       <Text style={styles.name}>Thư nô</Text>
@@ -66,14 +111,34 @@ const MyWall = () => {
           labelStyle={{fontSize: 15, marginHorizontal: 5}}>
           . . .
         </Button>
+        </View>
       </View>
+      <View style={{position: 'relative', marginTop: '-15%'}}>
+      <FlatList
+        keyExtractor={(item) => item.id}
+        data={Screen}
+        renderItem={({item}) => {
+          return (
+            <View style={styles.BtnFeature}>
+              <Button
+                mode="contained"
+                icon={item.icon}
+                labelStyle={{fontSize: 15}}
+                onPress={() => {
+                  navigation.navigate(item.name);
+                }}
+              >{item.title}</Button>
+            </View>
+          );
+        }}
+      /></View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
+    flex: 1
   },
   fontImgBG: {
     margin: 5,
@@ -119,6 +184,9 @@ const styles = StyleSheet.create({
   addNews: {
     flexDirection: 'row',
     margin: 5,
+  },
+  BtnFeature: {
+    margin: 10,
   },
 });
 

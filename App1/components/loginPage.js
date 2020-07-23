@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import Finger from '../screens/fingerPrintScreen';
 
-const LoginPage = () => {
+const LoginPage = ({navigation}) => {
     const[email, emailState] = useState('')
     const[password, passwordState] = useState('')
 
@@ -15,7 +16,7 @@ const LoginPage = () => {
         resizeMode='cover'
         />
         <View style={styles.inputcontainer}>
-            <Icon name='user-circle-o' size={30} style={{paddingHorizontal: 5}}  />
+            <Icon name='user-circle' size={30} style={{paddingHorizontal: 5}}  />
             <TextInput
             placeholder='Email'
             style={{flex: 1}}
@@ -38,7 +39,8 @@ const LoginPage = () => {
         mode="contained"
         style={{width: '40%'}}
         labelStyle={{fontSize: 20}}
-        onPress={() => {console.log(email, password)}}>Login</Button>
+        onPress={() => {navigation.navigate('MyWall')}}>Login</Button>
+        <Finger Press={() => {navigation.navigate('MyWall')}}/>
         <Text style={styles.horizontalLine}>--------------------------------------</Text>
         <Text style={styles.forgetPass}>Quên mật khẩu ?</Text>
         </View>

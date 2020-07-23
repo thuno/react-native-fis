@@ -5,31 +5,14 @@
  * @format
  * @flow strict-local
  */
-
+import 'react-native-gesture-handler';
 import React from 'react';
-import {View, ScrollView} from 'react-native';
-import MyWall from './components/myWall';
-import NotiScreen from './screens/notificationScreen';
-import PickDoc from './screens/pickDocScreen';
-import Location from './screens/locationScreen';
-import Finger from './screens/fingerPrintScreen';
-import Contact from './screens/contactScreen';
-import SMS from './screens/SMSScreen';
+import {View} from 'react-native';
+import StackScreen from './screens/stackScreens';
 
 const App = () => {
   return (
-    <View style={{flex: 1}}>
-    {/* <LoginPage/> */}
-        <MyWall />
-        <ScrollView style={{marginTop: '-15%'}}>
-          <Finger/>
-          <Contact/>
-          <SMS/>
-        {/* <PickDoc />
-        <Location />
-        <NotiScreen /> */}
-    </ScrollView>
-    </View>
+    <StackScreen/>
   );
 };
 export default App;
