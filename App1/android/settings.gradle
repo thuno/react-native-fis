@@ -1,4 +1,6 @@
 rootProject.name = 'App1'
+include ':react-native-get-sms-android'
+project(':react-native-get-sms-android').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-get-sms-android/android')
 include ':react-native-contacts'
 project(':react-native-contacts').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-contacts/android')
 include ':react-native-contacts'

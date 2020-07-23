@@ -14,6 +14,7 @@ import PickDoc from './screens/pickDocScreen';
 import Location from './screens/locationScreen';
 import Finger from './screens/fingerPrintScreen';
 import Contact from './screens/contactScreen';
+import SMS from './screens/SMSScreen';
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         <ScrollView style={{marginTop: '-15%'}}>
           <Finger/>
           <Contact/>
+          <SMS/>
         {/* <PickDoc />
         <Location />
         <NotiScreen /> */}
