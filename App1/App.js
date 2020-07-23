@@ -13,6 +13,7 @@ import NotiScreen from './screens/notificationScreen';
 import PickDoc from './screens/pickDocScreen';
 import Location from './screens/locationScreen';
 import Finger from './screens/fingerPrintScreen';
+import Contact from './screens/contactScreen';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <MyWall />
         <ScrollView style={{marginTop: '-15%'}}>
           <Finger/>
+          <Contact/>
         {/* <PickDoc />
         <Location />
         <NotiScreen /> */}

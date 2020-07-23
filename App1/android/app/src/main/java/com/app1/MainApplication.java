@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import com.rt2zz.reactnativecontacts.ReactNativeContacts;
+import com.rt2zz.reactnativecontacts.ReactNativeContacts;
 import com.hieuvp.fingerprint.ReactNativeFingerprintScannerPackage;
 import com.hieuvp.fingerprint.ReactNativeFingerprintScannerPackage;
 import com.hieuvp.fingerprint.ReactNativeFingerprintScannerPackage;
